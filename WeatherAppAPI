@@ -1,1 +1,20 @@
+#pip install requests
 import requests
+
+
+# Koordinaten für Riedenburg
+latitude = 48.96
+longitude = 11.69
+
+url = f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current_weather=true"
+
+response = requests.get(url)
+data = response.json()
+
+
+# Daten holen
+temperature = data["current_weather"]["temperature"]
+windspeed = data["current_weather"]["windspeed"]
+
+print(f"Temperatur: {temperature}°C")
+print(f"Windgeschwindigkeit: {windspeed} km/h")
